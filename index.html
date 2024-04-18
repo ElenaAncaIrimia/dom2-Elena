@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM manipulation Elena</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" />
+</head>
+<body class="main_container bg-slate-600">
+    <h1 class="main_title flex justify-center text-2xl font-semibold mt-20 text-green-800 transition duration-300 ease-in-out hover:text-black">Administrador de Lista de Productos</h1>
+
+
+    <div class="carrousel-container">
+        <div class="slide active">
+            <img src="/jamon.jpg" alt="Alimento 1">
+        </div>
+        <div class="slide">
+            <img src="/img/pan.jpg" alt="Alimento 2">
+        </div>
+        <div class="slide">
+            <img src="/img/queso.jpg" alt="Alimento 3">
+        </div>
+        <div class="slide">
+            <img src="/img/vino.jpg" alt="Alimento 4">
+        </div>
+    </div>
+    <form id="productForm">
+        <div class="product-name">
+        <label for="productName">Nombre del Producto:
+        <input type="text" id="productName" name="productName" required>
+    </label>
+    </div>
+    <div class="product-price">
+        <label for="productPrice">Precio(€):</label>
+        <input type="number" id="productPrice" name="productPrice" min="0" step="0.01" required>
+    </div>
+        <button type="submit"
+          onClick="submitProject()"
+        >
+          Agregar producto
+        </button>
+    </form>
+
+    <!-- Lista de productos -->
+    <table id="productTable">
+        <thead>
+            <tr>
+                <th>Nombre del Producto</th>
+                <th>Precio</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Los elementos se agregan dinámicamente aquí mediante JavaScript -->
+        </tbody>
+    </table>
+
+</body>
+</html>
