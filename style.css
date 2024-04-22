@@ -1,63 +1,22 @@
 
+image {
+  @apply -mr-4 w-36 h-20 transition-transform transform-gpu hover:scale-110
 
+}
 
 body {
     font-family: Arial, sans-serif;
 }
 
-  
-  
-.carrousel-container {
-    position: relative;
-    width: 100%;
-    height: 300px; /* Ajusta según tus necesidades */
-    overflow: hidden;
-}
+@keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
 
-.slide {
-    display: none;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
-
-.slide.active {
-    display: block;
-}
-
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-   
-}
-table, th, td {
-    border: 1px solid #ccc;
-    padding: 10px;
-}
-th {
-    background-color: #f2f2f2;
-}
-form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
-input[type="text"], input[type="number"] {
-    padding: 6px;
-    width: 200px;
-}
-button {
-    padding: 6px 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-input[type="submit"]:hover {
-
-    background-color: #172018;
-}
+  .animate-marquee {
+    animation: marquee 60s linear infinite; /* Ajusta la velocidad y la duración según necesites */
+  }
