@@ -1,3 +1,61 @@
+.success-popup {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 50%;
+  top: 20.8%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(117, 222, 133, 0.326);
+  width: 300px;
+  padding: 11px;
+  border-radius: 10px;
+  color: white;
+}
+
+.success-content {
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: -15px;
+  right: -6px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#success-message {
+  font-size: 18px;
+  text-align: center;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+.popup-form {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.popup-form h2 {
+  margin-bottom: 20px;
+}
 
 image {
   @apply -mr-4 w-36 h-20 transition-transform transform-gpu hover:scale-110
@@ -19,4 +77,11 @@ body {
 
   .animate-marquee {
     animation: marquee 60s linear infinite; /* Ajusta la velocidad y la duración según necesites */
+  }
+  .blue-alert {
+    background-color: #4a90e2; /* Color azul similar al botón de editar */
+    color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
   }

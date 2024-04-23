@@ -16,18 +16,40 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <script src="index.js"></script>
+  
     <link href="style.css" rel="stylesheet" />
   </head>
-  <body class="main_container bg-green-100">
+  <body class="main_container bg-blue-100">
+    <form id="registration-form" class="flex flex-wrap justify-end items-center mt-5 mr-10">
+      <div class="mb-4 w-full md:w-auto">
+        <input type="text" id="username" name="username" placeholder="Nombre de Usuario:" required class=" text-blue-700 text-sm block w-full border border-gray-300 rounded-md py-1 px-2 focus:outline-none focus:border-blue-400">
+        <div id="username-error" class="error-message"></div>
+      </div>
+      <div class="mb-4 w-full md:w-auto mt-5 md:mt-0 md:ml-4">
+        <input type="password" id="password" name="password" placeholder="Contraseña:" required class="text-blue-700 text-sm block w-full border border-gray-300 rounded-md py-1 px-2 focus:outline-none focus:border-blue-400">
+        <div id="password-error" class="error-message"></div>
+      </div>
+      <button type="submit" class="bg-blue-400 hover:bg-blue-700 text-white text-md  py-1 px-2  mb-5 rounded focus:outline-none focus:shadow-outline md:mt-0 md:ml-4">Registrarse</button>
+    </form>
+    
+  
+    <!-- Ventana emergente de registro exitoso -->
+    <div id="success-popup" class="success-popup">
+      <div class="success-content">
+        <span class="close" onclick="closeSuccessPopup()">&times;</span>
+        <p id="success-message"></p>
+      </div>
+    </div>
+  
     <h1
-      class="main_title  flex justify-center text-2xl font-semibold mt-20 text-green-800 transition duration-300 ease-in-out hover:text-black"
+      class="main_title bg-blue-200 flex justify-center text-2xl font-semibold mt-15 text-green-800 transition duration-300 ease-in-out hover:text-black"
     >
       Administrador de Lista de Productos
     </h1>
-  
 
-    <div class="carousel mt-20 overflow-hidden">
+   
+
+    <div class="carousel mt-24 overflow-hidden">
       <ul class="flex flex-wrap justify-start w-full space-x-4 animate-marquee">
         <li><img src="/img/queso.jpg" alt="Alimento 2" class=" w-36 h-20 transition-transform transform-gpu hover:scale-110" /></li>
         <li>
@@ -58,10 +80,16 @@
     
       </ul>
     </div>
-    
+    <!-- Mensaje de error -->
+    <div id="error-message" class="bg-red-100 border  w-full border-red-400 text-red-700 px-4 py-3 rounded relative hidden" role="alert">
+      <strong class="font-bold">Error:</strong>
+      <span class="block sm:inline">El precio y la cantidad deben ser mayores que 0.</span>
+  </div>
 
-    <form class="productForm flex justify-center items-center gap-4 mt-5 mb-10">
+    <form class="productForm bg-blue-200 flex justify-center items-center gap-4 mt-5 mb-10 h-25">
         <div class="flex flex-col sm:flex-row justify-around items-center mt-20">
+             
+    
             <div class="product-name mb-4 sm:mb-4">
                 <label for="" class="product_name-label text-base font-bold label-common-size">
                   Producto:
@@ -76,35 +104,44 @@
                 </label>
               </div>
               <div class="product-price mb-4 sm:mb-4">
-                <label for="" class="product_price-label text-base font-bold label-common-size ml-2">
-                  Precio <i class="fa-solid fa-euro-sign"></i>:
-                </label>
-                <input
-                  type="number"
-                  class="product_price-input border border-green-400 rounded-md px-4 py-2 focus-within:border-green-500 focus:outline-none focus-within:ring-2"
-                  name="productPrice"
-                  min="0"
-                  step="0.01"
-                  required
-                />
+                
+                  <label for="" class="product_price-label text-base font-bold label-common-size ml-2">
+                    Precio <i class="fa-solid fa-euro-sign"></i>:
+                  </label>
+                  <input
+                    type="number"
+                    class="product_price-input border border-green-400 rounded-md px-4 py-2 focus-within:border-green-500 focus:outline-none focus-within:ring-2"
+                    name="productPrice"
+                    min="0"
+                    step="0.01"
+                    required
+                  />
+                </div>
+                <div class="product-price mb-4 sm:mb-4">
+                  <label for="" class="product_quantity-label text-base font-bold label-common-size ml-2">
+                    Cantidad:
+                  </label>
+                  <input
+                    type="number"
+                    class="product_quantity-input border border-green-400 rounded-md px-4 py-2 focus-within:border-green-500 focus:outline-none focus-within:ring-2"
+                    name="productQuantity"
+                    min="0"
+                    step="0.01"
+                    required
+                  />
               </div>
-          <div class="flex flex-col sm:flex-row justify-center items-center ml-6 gap-4">
+        </div>
+          <div class="flex flex-col sm:flex-row justify-center items-center mt-16 ml-6 gap-4">
             <button
-              type="submit" onClick="add()"
+              type="button" onclick="add()"
               class="btnAgregar text-green-100 bg-green-400 hover:bg-green-800 px-4 py-2 rounded-md w-full sm:w-auto"
             >
               <i class="fa-solid fa-cart-plus"></i> 
               Agregar producto
             </button>
+            
             <button
-              type="submit" onClick="edit()"
-              class="btnEditar text-white bg-blue-400 hover:bg-blue-800 px-6 py-2 rounded-md"
-            >
-              <i class="fa-solid fa-pen"></i>
-              Editar producto
-            </button>
-            <button
-              type="submit" onClick="delete()"
+              type="submit" onclick="deleteProduct()"
               class="btnBorrar text-green-100 bg-red-400 hover:bg-red-800 px-6 py-2 rounded-md"
             >
               <i class="fa-regular fa-trash-can"></i>
@@ -117,14 +154,18 @@
     <table class="productTable w-full max-w-screen-xl mx-auto mt-10 divide-y divide-green-400">
         <thead class="theadTable bg-gray-50">
           <tr class="trTable border border-green-600">
-            <th scope="col" class=" thTable1 px-6 py-3 text-left text-xs font-bold text-green-600 uppercase tracking-wider">Nombre del Producto</th>
-            <th scope="col" class="thTable2 px-6 py-3 text-left text-xs font-bold text-green-600 uppercase tracking-wider">Precio</th>
-            <th scope="col" class="thTable3 px-6 py-3 text-left text-xs font-bold text-green-600 uppercase tracking-wider">Acciones</th>
+            <th scope="col" class="thTable1 px-6 py-3 text-left text-sm font-bold text-green-600 uppercase tracking-wider sm:hidden">Producto</th>
+            <th scope="col" class=" thTable1 px-6 py-3 text-left text-sm font-bold text-green-600 uppercase tracking-wider hidden sm:table-cell">Nombre del Producto</th>
+            <th scope="col" class="thTable2 px-4 py-3 text-left text-sm font-bold text-green-600 uppercase tracking-wider">Precio</i></th>
+            <th scope="col" class="thTable2 px-1 py-3 text-left text-sm font-bold text-green-600 uppercase tracking-wider">Cantidad </i></th>
+            <th scope="col" class="thTable3 px-28 py-3 text-left text-sm font-bold text-green-600 uppercase tracking-wider">Acciones</th>
           </tr>
         </thead>
         <tbody class="tbodyTable bg-white divide-y divide-gray-200">
           <!-- Las filas de la tabla se agregarán aquí dinámicamente -->
         </tbody>
       </table>
+      <script src="index.js"></script>
   </body>
+
 </html>
