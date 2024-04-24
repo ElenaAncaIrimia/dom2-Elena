@@ -33,13 +33,10 @@
   color: red;
   font-size: 14px;
   margin-top: 5px;
+  height: 20px;
+  display: block;
 }
 
-.error-message {
-  color: red;
-  font-size: 14px;
-  margin-top: 5px;
-}
 .popup-form {
   display: none;
   position: fixed;
@@ -57,31 +54,42 @@
   margin-bottom: 20px;
 }
 
-image {
-  @apply -mr-4 w-36 h-20 transition-transform transform-gpu hover:scale-110
-
+body {
+  font-family: Arial, sans-serif;
 }
 
-body {
-    font-family: Arial, sans-serif;
+.blue-alert {
+  background-color: #4a90e2; /* Color azul similar al botón de editar */
+  color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+}
+
+.image {
+  margin-right: -4px;
+  width: 9rem; /* 36px */
+  height: 5rem; /* 20px */
+  transition: transform 0.3s ease; /* Ajusta la velocidad de la transición según necesites */
+}
+
+.image:hover {
+  transform: scale(1.1);
 }
 
 @keyframes marquee {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-100%);
-    }
+  0% {
+    transform: translateX(0);
   }
+  100% {
+    transform: translateX(
+      -100%
+    ); /* Desplazamiento para la cantidad de imágenes duplicadas */
+  }
+}
 
-  .animate-marquee {
-    animation: marquee 60s linear infinite; /* Ajusta la velocidad y la duración según necesites */
-  }
-  .blue-alert {
-    background-color: #4a90e2; /* Color azul similar al botón de editar */
-    color: white;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    margin-top: 1rem;
-  }
+.animate-marquee {
+  display: flex; /* Hacer que el contenedor de imágenes sea un flexbox */
+  animation: marquee 90s linear infinite; /* Ajusta la velocidad y la duración según necesites */
+}
+
