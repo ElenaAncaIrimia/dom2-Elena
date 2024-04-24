@@ -38,8 +38,8 @@ document
     document.getElementById("success-message").textContent = successMessage;
     document.getElementById("success-popup").style.display = "block";
 
-    // También podrías redirigir al usuario a una página de inicio de sesión
-    // window.location.href = 'login.html';
+    // Ocultar el botón de registro en dispositivos móviles
+document.getElementById("registro-btn").classList.add("hidden");
   });
 
 // Función para cerrar la ventana emergente de registro exitoso

@@ -3,7 +3,7 @@
   position: fixed;
   z-index: 9999;
   left: 50%;
-  top: 20.8%;
+  top: 23.8%;
   transform: translate(-50%, -50%);
   background-color: rgba(117, 222, 133, 0.326);
   width: 300px;
@@ -93,3 +93,27 @@ body {
   animation: marquee 90s linear infinite; /* Ajusta la velocidad y la duración según necesites */
 }
 
+/*responsive */
+@media (max-width: 640px) {
+  /* Modificación del formulario de registro */
+  #registration-form {
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    max-width: 50%;
+    
+  }
+
+  /* Reducir el tamaño de la ventana emergente */
+  .success-popup {
+   top:10%;
+    max-width: 50%; /* Ajusta el ancho según sea necesario */
+    padding: 5px; /* Ajusta el espaciado interno según sea necesario */
+  }
+  /* Reducir el tamaño de la fuente en la ventana emergente */
+  .success-popup .success-content {
+    font-size:14px; /* Ajusta el tamaño de la fuente según sea necesario */
+  }
+}
