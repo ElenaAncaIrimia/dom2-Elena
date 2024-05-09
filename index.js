@@ -39,7 +39,7 @@ document
     document.getElementById("success-popup").style.display = "block";
 
     // Ocultar el botón de registro en dispositivos móviles
-document.getElementById("registro-btn").classList.add("hidden");
+    document.getElementById("registro-btn").classList.add("hidden");
   });
 
 // Función para cerrar la ventana emergente de registro exitoso
