@@ -22,23 +22,27 @@
 
   
   <body class="main_container bg-blue-100">
+    <div id="user-display" class="text-lg font-semibold text-blue-400 p-4"></div>
 
-
-    <form id="registration-form" class="flex flex-wrap  justify-end  items-center mt-5  mr-10 ">
-      <div class="mb-4 w-full md:w-auto">
-        <input type="text" id="username" name="username" placeholder="Nombre de Usuario:" required class="text-blue-700 text-sm block w-full border border-gray-300 rounded-md py-1 px-2 focus:outline-none focus:border-blue-400">
-        <div id="username-error" class="error-message"></div>
-      </div>
-      <div class="mb-4 w-full md:w-auto mt-5 md:mt-0 md:ml-4 h-auto">
-        <input type="password" id="password" name="password" placeholder="Contraseña:" required class="text-blue-700 text-sm block w-full border border-gray-300 rounded-md py-1 px-2 focus:outline-none focus:border-blue-400 ">
-        <div id="password-error" class="error-message"></div>
-      </div>
-      <button type="submit" id="registro-btn" class="bg-blue-400 hover:bg-blue-700 text-white text-md  py-1 px-2  mb-10 rounded focus:outline-none focus:shadow-outline md:mt-0 md:ml-4 ">Registrarse</button>
-    </form>
+ <!-- Formulario de Registro -->
+ <form id="registration-form" class="grid grid-cols-1 sm:grid-cols-2 gap-2 items-center justify-center mt-5 w-full max-w-sm mx-auto p-4 bg-blue-100 shadow-md rounded-md">
+  <div class="w-full">
+      <input type="text" id="username" name="username" placeholder="Nombre de Usuario:" required class="text-blue-700 text-base block w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+      <div id="username-error" class="error-message"></div>
+  </div>
+  <div class="w-full">
+      <input type="password" id="password" name="password" placeholder="Contraseña:" required class="text-blue-700 text-base block w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+      <div id="password-error" class="error-message"></div>
+  </div>
+  <div class="sm:col-span-2">
+      <button type="submit" id="registro-btn" class="w-full bg-blue-400 hover:bg-blue-500 text-white text-base font-semibold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">Registrarse</button>
+  </div>
+</form>
 
     <!-- Ventana emergente de registro exitoso -->
     <div id="success-popup" class="success-popup">
       <div class="success-content">
+        <p id="success-message"></p>
         <span class="close" onclick="closeSuccessPopup()">&times;</span>
         <p id="success-message"></p>
       </div>
@@ -47,29 +51,13 @@
     <h1 class="main_title bg-blue-200 flex justify-center text-2xl font-semibold mt-15 text-green-800 transition duration-300 ease-in-out hover:text-black">
       Administrador de Lista de Productos
     </h1>
-
-    <div class="carousel mt-2 overflow-hidden relative">
-      <ul class="flex flex-nowrap animate-marquee">
-        <li class="mr-4"><img src="/img/queso.jpg" alt="Alimento 2" class="w-36 h-20 transition-transform transform-gpu hover:scale-110" /></li>
-        <li class="mr-4"><img src="/img/pan.jpg" alt="Alimento 2" class="w-36 h-20 transition-transform transform-gpu hover:scale-110" /></li>
-        <li class="mr-4"><img src="/img/vino.jpg" alt="Alimento 4" class="w-36 h-20 transition-transform transform-gpu hover:scale-110" /></li>
-        <li class="mr-4"><img src="/img/queso.jpg" alt="Alimento 2" class="w-36 h-20 transition-transform transform-gpu hover:scale-110" /></li>
-        <li class="mr-4"><img src="/img/pan.jpg" alt="Alimento 2" class="w-36 h-20 transition-transform transform-gpu hover:scale-110" /></li>
-        <li class="mr-4"><img src="/img/vino.jpg" alt="Alimento 4" class="w-36 h-20 transition-transform transform-gpu hover:scale-110" /></li>
-        <li class="mr-4"><img src="/img/queso.jpg" alt="Alimento 2" class="w-36 h-20 transition-transform transform-gpu hover:scale-110" /></li>
-        <li class="mr-4"><img src="/img/pan.jpg" alt="Alimento 2" class="w-36 h-20 transition-transform transform-gpu hover:scale-110" /></li>
-        <li class="mr-4"><img src="/img/vino.jpg" alt="Alimento 4" class="w-36 h-20 transition-transform transform-gpu hover:scale-110" /></li>
-        <li class="mr-4"><img src="/img/queso.jpg" alt="Alimento 2" class="w-36 h-20 transition-transform transform-gpu hover:scale-110" /></li>
-        <li class="mr-4"><img src="/img/pan.jpg" alt="Alimento 2" class="w-36 h-20 transition-transform transform-gpu hover:scale-110" /></li>
-        <li class="mr-4"><img src="/img/vino.jpg" alt="Alimento 4" class="w-36 h-20 transition-transform transform-gpu hover:scale-110" /></li>
-        <li class="mr-4"><img src="/img/queso.jpg" alt="Alimento 2" class="w-36 h-20 transition-transform transform-gpu hover:scale-110" /></li>
-        <li class="mr-4"><img src="/img/pan.jpg" alt="Alimento 2" class="w-36 h-20 transition-transform transform-gpu hover:scale-110" /></li>
-        <li class="mr-4"><img src="/img/vino.jpg" alt="Alimento 4" class="w-36 h-20 transition-transform transform-gpu hover:scale-110" /></li>
-        <li class="mr-4"><img src="/img/queso.jpg" alt="Alimento 2" class="w-36 h-20 transition-transform transform-gpu hover:scale-110" /></li>
-        <li class="mr-4"><img src="/img/pan.jpg" alt="Alimento 2" class="w-36 h-20 transition-transform transform-gpu hover:scale-110" /></li>
-        <li class="mr-4"><img src="/img/vino.jpg" alt="Alimento 4" class="w-36 h-20 transition-transform transform-gpu hover:scale-110" /></li>
+    <div class="carousel mt-5 overflow-hidden relative w-full max-w-4xl">
+      <ul class="flex flex-nowrap carousel-track space-x-4">
+          <li class="flex-shrink-0 carousel-slide"><img src="/img/queso.jpg" alt="Queso" class="w-24 h-16 sm:w-36 sm:h-20 transition-transform transform-gpu hover:scale-110" /></li>
+          <li class="flex-shrink-0 carousel-slide"><img src="/img/pan.jpg" alt="Pan" class="w-24 h-16 sm:w-36 sm:h-20 transition-transform transform-gpu hover:scale-110" /></li>
+          <li class="flex-shrink-0 carousel-slide"><img src="/img/vino.jpg" alt="Vino" class="w-24 h-16 sm:w-36 sm:h-20 transition-transform transform-gpu hover:scale-110" /></li>
       </ul>
-    </div>
+  </div>
 
     <!-- Mensaje de error -->
     <div id="error-message" class="bg-red-100 border w-full border-red-400 text-red-700 px-4 py-3 rounded relative hidden" role="alert">
@@ -77,54 +65,55 @@
       <span class="block sm:inline">El precio y la cantidad deben ser mayores que 0.</span>
     </div>
 
-    <form class="productForm bg-blue-200 flex flex-col sm:flex-row justify-center items-center gap-2 mt-2 mb-5 h-25">
-      <div class="flex flex-col sm:flex-row justify-around items-center mt-10">
-        <div class="product-name mb-2 sm:mb-4">
-          <label for="" class="product_name-label text-base font-bold label-common-size">
+  <form class="productForm bg-blue-200 flex flex-col gap-4 mt-2 mb-5 max-w-sm mx-auto p-4">
+    <div class="flex flex-col">
+        <label for="productName" class="product_name-label text-sm font-bold mb-1">
             Producto:
-            <input type="text" class="product_name-input border border-green-400 rounded-md px-2 py-1 focus-within:border-green-500 focus:outline-none focus-within:ring-2" min="0" step="0.01" name="productName" required />
-          </label>
+        </label>
+        <input type="text" id="productName" class="product_name-input border border-green-400 rounded-md px-2 py-1 focus-within:border-green-500 focus:outline-none focus-within:ring-2 w-full" name="productName" required />
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+        <div class="flex flex-col">
+            <label for="productQuantity" class="product_quantity-label text-sm font-bold mb-1">
+                Cantidad:
+            </label>
+            <input type="number" id="productQuantity" class="product_quantity-input border border-green-400 rounded-md px-2 py-1 focus-within:border-green-500 focus:outline-none focus-within:ring-2 w-full" name="productQuantity" min="0" step="0.01" required />
         </div>
-        <div class="product-price mb-2 sm:mb-4">
-          <label for="" class="product_price-label text-base font-bold label-common-size ml-2">
-            Precio <i class="fa-solid fa-euro-sign"></i>:
-          </label>
-          <input type="number" class="product_price-input border border-green-400 rounded-md px-2 py-1 focus-within:border-green-500 focus:outline-none focus-within:ring-2" name="productPrice" min="0" step="0.01" required />
+        <div class="flex flex-col">
+            <label for="productPrice" class="product_price-label text-sm font-bold mb-1">
+                Precio <i class="fa-solid fa-euro-sign"></i>:
+            </label>
+            <input type="number" id="productPrice" class="product_price-input border border-green-400 rounded-md px-2 py-1 focus-within:border-green-500 focus:outline-none focus-within:ring-2 w-full" name="productPrice" min="0" step="0.01" required />
         </div>
-        <div class="product-price mb-2 sm:mb-4">
-          <label for="" class="product_quantity-label text-base font-bold label-common-size ml-2">
-            Cantidad:
-          </label>
-          <input type="number" class="product_quantity-input border border-green-400 rounded-md px-2 py-1 focus-within:border-green-500 focus:outline-none focus-within:ring-2" name="productQuantity" min="0" step="0.01" required />
-        </div>
-      </div>
-      <div class="flex flex-col sm:flex-row justify-center items-center mt-8 ml-3 gap-2">
+    </div>
+    <div class="flex flex-col sm:flex-row gap-2">
         <button type="button" onclick="add()" class="btnAgregar text-green-100 bg-green-400 hover:bg-green-800 px-2 py-1 rounded-md w-full sm:w-auto">
-          <i class="fa-solid fa-cart-plus"></i> Agregar producto
+            <i class="fa-solid fa-cart-plus"></i> Agregar producto
         </button>
         <button type="submit" onclick="deleteProduct()" class="btnBorrar text-green-100 bg-red-400 hover:bg-red-800 px-2 py-1 rounded-md w-full sm:w-auto">
-          <i class="fa-regular fa-trash-can"></i> Borrar producto
+            <i class="fa-regular fa-trash-can"></i> Borrar producto
         </button>
-      </div>
-    </form>
+    </div>
+</form>
+  
 
-    <!-- Después del formulario -->
+  <div class="tabla bg-blue-200 flex flex-col gap-2 mt-2 mb-5 max-w-sm mx-auto p-2 sm:max-w-md md:max-w-lg lg:max-w-xl">
     <div class="overflow-x-auto">
-        <table class="productTable w-full max-w-screen-lg mx-auto mt-5 divide-y divide-green-400">
-          <thead class="theadTable bg-gray-50">
-            <tr class="trTable border border-green-600">
-              <th scope="col" class="thTable1 px-3 py-2 text-left text-sm font-bold text-green-600 uppercase tracking-wider sm:hidden">Producto</th>
-              <th scope="col" class="thTable1 px-3 py-2 text-left text-sm font-bold text-green-600 uppercase tracking-wider hidden sm:table-cell">Nombre del Producto</th>
-              <th scope="col" class="thTable2 px-2 py-2 text-left text-sm font-bold text-green-600 uppercase tracking-wider">Precio</th>
-              <th scope="col" class="thTable2 px-1 py-2 text-left text-sm font-bold text-green-600 uppercase tracking-wider">Cantidad</th>
-              <th scope="col" class="thTable3 px-5 py-2 text-left text-sm font-bold text-green-600 uppercase tracking-wider">Acciones</th>
-            </tr>
-          </thead>
-          <tbody class="tbodyTable bg-white divide-y divide-gray-200">
-            <!-- Las filas de la tabla se agregarán aquí dinámicamente -->
-          </tbody>
+        <table class="productTable w-full mt-2 divide-y divide-green-400">
+            <thead class="theadTable bg-gray-50">
+                <tr class="trTable border border-green-600">
+                    <th scope="col" class="thTable1 px-2 py-1 text-xs font-semibold text-green-600 uppercase tracking-wider sm:hidden md:table-cell">Producto</th>
+                    <th scope="col" class="thTable1 px-2 py-1 text-xs font-semibold text-green-600 uppercase tracking-wider hidden sm:table-cell">Nombre</th>
+                    <th scope="col" class="thTable2 px-1 py-1 text-xs font-semibold text-green-600 uppercase tracking-wider">Precio</th>
+                    <th scope="col" class="thTable2 px-1 py-1 text-xs font-semibold text-green-600 uppercase tracking-wider">Cant.</th>
+                    <th scope="col" class="thTable3 px-2 py-1 text-xs font-semibold text-green-600 uppercase tracking-wider">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="tbodyTable bg-white divide-y divide-gray-200">
+                </tbody>
         </table>
-      </div>
+    </div>
+</div>
     <script src="index.js"></script>
   </body>
 </html>

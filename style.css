@@ -1,19 +1,23 @@
 .success-popup {
   display: none;
   position: fixed;
-  z-index: 9999;
+  z-index: 99999; /* Z-index aumentado para estar encima de todo */
   left: 50%;
-  top: 23.8%;
+  top: 10%;
   transform: translate(-50%, -50%);
-  background-color: rgba(117, 222, 133, 0.326);
-  width: 300px;
-  padding: 11px;
+  background-color: rgba(117, 222, 133, 0.6);
+  width: 50%;
+  max-width: 250px;
+  padding: 20px;
   border-radius: 10px;
   color: white;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .success-content {
   position: relative;
+  text-align: center;
 }
 
 .close {
@@ -32,8 +36,7 @@
 .error-message {
   color: red;
   font-size: 14px;
-  margin-top: 5px;
-  height: 20px;
+  height: 35px;
   display: block;
 }
 
@@ -65,52 +68,33 @@ body {
   border-radius: 0.5rem;
   margin-top: 1rem;
 }
-
-.image {
-  margin-right: -4px;
-  width: 9rem; /* 36px */
-  height: 5rem; /* 20px */
-  transition: transform 0.3s ease; /* Ajusta la velocidad de la transición según necesites */
-}
-
-.image:hover {
-  transform: scale(1.1);
-}
-
-@keyframes marquee {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
-.animate-marquee {
-  display: flex; /* Hacer que el contenedor de imágenes sea un flexbox */
-  animation: marquee 90s linear infinite; /* Ajusta la velocidad y la duración según necesites */
-}
-
-<<<<<<< HEAD
-=======
 .carousel {
-  position: relative;
-  width: 100%;
   overflow: hidden;
 }
 
 .carousel ul {
   display: flex;
-  width: 200%; /* Ajusta según el número de elementos */
-  animation: marquee 20s linear infinite;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  white-space: nowrap; /* Evita que las imágenes se envuelvan */
 }
 
-.carousel ul li {
-  flex: 0 0 auto;
-  width: 10%; /* Ajusta según el número de elementos */
+.carousel {
+  overflow: hidden;
 }
 
->>>>>>> 83fbc91 (dom responsive)
+.carousel-track {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  white-space: nowrap;
+}
+
+.carousel-slide {
+  flex-shrink: 0;
+}
 /*responsive */
 @media (max-width: 640px) {
   /* Modificación del formulario de registro */

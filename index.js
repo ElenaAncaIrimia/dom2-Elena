@@ -29,23 +29,63 @@ document
     // Si todas las validaciones son exitosas, puedes continuar con el registro
     // Aquí puedes almacenar los datos del usuario en el almacenamiento local o enviarlos a un servidor
 
-    // Por ejemplo, almacenarlos en el almacenamiento local
+    // Almacenar en el almacenamiento local
     localStorage.setItem("username", username);
     localStorage.setItem("password", password);
 
     // Mostrar un mensaje de registro exitoso
     let successMessage = `¡Registro exitoso! Bienvenido, ${username}!`;
-    document.getElementById("success-message").textContent = successMessage;
+    document.getElementById("success-message").innerHTML = successMessage;
     document.getElementById("success-popup").style.display = "block";
 
-    // Ocultar el botón de registro en dispositivos móviles
-    document.getElementById("registro-btn").classList.add("hidden");
-  });
+    // Ocultar los inputs y el botón de registro
+    document.getElementById("username").parentElement.style.display = "none";
+    document.getElementById("password").parentElement.style.display = "none";
+    document.getElementById("registro-btn").style.display = "none";
+
+    // Mostrar el nombre del usuario en la parte superior
+    document.getElementById("user-display").textContent = `Bienvenido/a: ${username}`;
+});
 
 // Función para cerrar la ventana emergente de registro exitoso
 function closeSuccessPopup() {
-  document.getElementById("success-popup").style.display = "none";
+    document.getElementById("success-popup").style.display = "none";
 }
+document.addEventListener("DOMContentLoaded", function () {
+  const carouselTrack = document.querySelector(".carousel-track");
+  const slides = document.querySelectorAll(".carousel-slide");
+
+  if (carouselTrack && slides.length > 0) {
+      const imageCount = slides.length;
+      const duplicateCount = 5;
+
+      // Duplicar las imágenes
+      for (let i = 0; i < duplicateCount; i++) {
+          slides.forEach((slide) => {
+              carouselTrack.appendChild(slide.cloneNode(true));
+          });
+      }
+
+      // Animación usando requestAnimationFrame
+      let position = 0;
+      const speed = 1; // Ajusta la velocidad
+
+      function animate() {
+          position -= speed;
+          carouselTrack.style.transform = `translateX(${position}px)`;
+
+          if (position <= -carouselTrack.scrollWidth / 2) {
+              position = 0;
+          }
+
+          requestAnimationFrame(animate);
+      }
+
+      animate();
+  } else {
+      console.error("No se encontraron los elementos del carrusel.");
+  }
+});
 
 function add() {
   // Obtener los valores del formulario
@@ -103,12 +143,12 @@ function addProductToTable(product) {
 
   let row = document.createElement("tr");
   row.innerHTML = `
-    <td class="px-6 py-4 whitespace-nowrap uppercase font-bold">${product.name}</td>
-    <td class="px-6 py-4 whitespace-nowrap text-uppercase font-bold">${product.price}</td>
-    <td class="px-6 py-4 whitespace-nowrap text-uppercase- font-bold">${product.quantity}</td>
-    <td class="px-6 py-4 whitespace-nowrap">
-    <button onclick="editProduct(this)" class=" sm:mr-6 text-white bg-blue-400 hover:bg-blue-800 px-4 py-2 rounded-md sm:px-2 sm:py-1"><i class="fas fa-edit text-sm"></i>Editar</button>
-    <button onclick="deleteProduct(this)" class=" sm:mr-6 text-green-100 bg-red-400 hover:bg-red-800 px-4 py-2 rounded-md sm:px-2 sm:py-1"><i class="fas fa-trash-alt text-sm"></i>Eliminar</button>
+    <td class="px-2 py-1 text-xs font-bold uppercase ">${product.name}</td>
+        <td class="px-1 py-1 text-xs">${product.price}</td>
+        <td class="px-1 py-1 text-xs">${product.quantity}</td>
+        <td class="px-2 py-1 text-xs">
+    <button onclick="editProduct(this)" class=" sm:mr-6 text-white bg-blue-400 hover:bg-blue-800 px-2 py-1 rounded-md sm:px-2 sm:py-1"><i class="fas fa-edit text-sm"></i>Editar</button>
+    <button onclick="deleteProduct(this)" class=" sm:mr-6 text-green-100 bg-red-400 hover:bg-red-800 px-2 py-1 rounded-md sm:px-2 sm:py-1"><i class="fas fa-trash-alt text-sm"></i>Eliminar</button>
   
     </td>
   `;
