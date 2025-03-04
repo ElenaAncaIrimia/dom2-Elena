@@ -2,3 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+<<<<<<< HEAD
+=======
+@layer components {
+.text-blue {
+    @apply text-blue-700 text-sm block w-full border border-gray-300 rounded-md py-1 px-2 focus:outline-none focus:border-blue-400
+}
+}
+>>>>>>> 83fbc91 (dom responsive)

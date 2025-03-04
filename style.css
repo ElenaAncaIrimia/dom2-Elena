@@ -79,12 +79,10 @@ body {
 
 @keyframes marquee {
   0% {
-    transform: translateX(0);
+    transform: translateX(0%);
   }
   100% {
-    transform: translateX(
-      -100%
-    ); /* Desplazamiento para la cantidad de imágenes duplicadas */
+    transform: translateX(-100%);
   }
 }
 
@@ -93,6 +91,26 @@ body {
   animation: marquee 90s linear infinite; /* Ajusta la velocidad y la duración según necesites */
 }
 
+<<<<<<< HEAD
+=======
+.carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel ul {
+  display: flex;
+  width: 200%; /* Ajusta según el número de elementos */
+  animation: marquee 20s linear infinite;
+}
+
+.carousel ul li {
+  flex: 0 0 auto;
+  width: 10%; /* Ajusta según el número de elementos */
+}
+
+>>>>>>> 83fbc91 (dom responsive)
 /*responsive */
 @media (max-width: 640px) {
   /* Modificación del formulario de registro */
