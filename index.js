@@ -118,8 +118,16 @@ function add() {
   // Obtener la lista de productos desde localStorage o inicializarla si no existe
   let productList = JSON.parse(localStorage.getItem("productList")) || [];
 
+  //Evitar la duplicación de productos
+if (productList.some(product => product.name === productName)) {
+  alert("Este producto ya existe.");
+  return;
+}
+
+
   // Agregar el nuevo producto a la lista
   productList.push(product);
+  
 
   // Guardar la lista actualizada en localStorage
   localStorage.setItem("productList", JSON.stringify(productList));
@@ -223,6 +231,8 @@ function updateTable() {
 
 // Función para eliminar un producto
 function deleteProduct(button) {
+  const confirmDelete = confirm("¿Estás seguro de que deseas eliminar este producto?");
+  if (!confirmDelete) return;
   console.log("Eliminar producto");
   // Obtener la fila que contiene el botón
   let row = button.parentNode.parentNode;
