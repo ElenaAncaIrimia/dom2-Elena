@@ -22,22 +22,23 @@
 
   
   <body class="main_container bg-blue-100">
-    <div id="user-display" class="text-lg font-semibold text-blue-400 p-4"></div>
+    <div id="user-display" class="text-lg font-semibold text-blue-400"></div>
 
  <!-- Formulario de Registro -->
- <form id="registration-form" class="grid grid-cols-1 sm:grid-cols-2 gap-2 items-center justify-center mt-5 w-full max-w-sm mx-auto p-4 bg-blue-100 shadow-md rounded-md">
+ <form id="registration-form" class="grid grid-cols-1 sm:grid-cols-2 gap-2 items-center justify-center mt-5 w-full max-w-sm sm:max-w-xs mx-auto p-3 sm:p-2 bg-blue-100 shadow-md rounded-md">
   <div class="w-full">
-      <input type="text" id="username" name="username" placeholder="Nombre de Usuario:" required class="text-blue-700 text-base block w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+      <input type="text" id="username" name="username" placeholder="Nombre de Usuario:" required class="text-blue-700 text-base sm:text-sm block w-full border border-gray-300 rounded-md py-2 sm:py-1 px-3 sm:px-2 focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
       <div id="username-error" class="error-message"></div>
   </div>
   <div class="w-full">
-      <input type="password" id="password" name="password" placeholder="Contraseña:" required class="text-blue-700 text-base block w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+      <input type="password" id="password" name="password" placeholder="Contraseña:" required class="text-blue-700 text-base sm:text-sm block w-full border border-gray-300 rounded-md py-2 sm:py-1 px-3 sm:px-2 focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
       <div id="password-error" class="error-message"></div>
   </div>
   <div class="sm:col-span-2">
-      <button type="submit" id="registro-btn" class="w-full bg-blue-400 hover:bg-blue-500 text-white text-base font-semibold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">Registrarse</button>
+      <button type="submit" id="registro-btn" class="w-full bg-blue-400 hover:bg-blue-500 text-white text-base sm:text-sm font-semibold py-2 sm:py-1 px-4 sm:px-2 rounded-lg focus:outline-none focus:shadow-outline">Registrarse</button>
   </div>
 </form>
+
 
     <!-- Ventana emergente de registro exitoso -->
     <div id="success-popup" class="success-popup">
@@ -48,23 +49,33 @@
       </div>
     </div>
 
-    <h1 class="main_title bg-blue-200 flex justify-center text-2xl font-semibold mt-15 text-green-800 transition duration-300 ease-in-out hover:text-black">
+    <h1 class="main_title bg-blue-200 flex justify-center text-xl mt-10 font-semibold mt-15 text-green-800 transition duration-300 ease-in-out hover:text-black">
       Administrador de Lista de Productos
     </h1>
-    <div class="carousel mt-5 overflow-hidden relative w-full max-w-4xl">
-      <ul class="flex flex-nowrap carousel-track space-x-4">
-          <li class="flex-shrink-0 carousel-slide"><img src="/img/queso.jpg" alt="Queso" class="w-24 h-16 sm:w-36 sm:h-20 transition-transform transform-gpu hover:scale-110" /></li>
-          <li class="flex-shrink-0 carousel-slide"><img src="/img/pan.jpg" alt="Pan" class="w-24 h-16 sm:w-36 sm:h-20 transition-transform transform-gpu hover:scale-110" /></li>
-          <li class="flex-shrink-0 carousel-slide"><img src="/img/vino.jpg" alt="Vino" class="w-24 h-16 sm:w-36 sm:h-20 transition-transform transform-gpu hover:scale-110" /></li>
-      </ul>
-  </div>
+    <!-- Carrusel -->
+    <div class="flex justify-center w-full">
+      <div class="carousel mt-5 overflow-hidden relative w-full max-w-4xl mx-auto">
+          <ul class="flex flex-nowrap carousel-track space-x-4 justify-center">
+              <li class="flex-shrink-0 carousel-slide">
+                  <img src="/img/queso.jpg" alt="Queso" class="w-24 h-16 sm:w-36 sm:h-20 md:w-48 md:h-28 lg:w-56 lg:h-32 transition-transform transform-gpu hover:scale-110" />
+              </li>
+              <li class="flex-shrink-0 carousel-slide">
+                  <img src="/img/pan.jpg" alt="Pan" class="w-24 h-16 sm:w-36 sm:h-20 md:w-48 md:h-28 lg:w-56 lg:h-32 transition-transform transform-gpu hover:scale-110" />
+              </li>
+              <li class="flex-shrink-0 carousel-slide">
+                  <img src="/img/vino.jpg" alt="Vino" class="w-24 h-16 sm:w-36 sm:h-20 md:w-48 md:h-28 lg:w-56 lg:h-32 transition-transform transform-gpu hover:scale-110" />
+              </li>
+          </ul>
+      </div>
+    </div>
+    
 
     <!-- Mensaje de error -->
     <div id="error-message" class="bg-red-100 border w-full border-red-400 text-red-700 px-4 py-3 rounded relative hidden" role="alert">
       <strong class="font-bold">Error:</strong>
       <span class="block sm:inline">El precio y la cantidad deben ser mayores que 0.</span>
     </div>
-
+<!-- Formulario de Producto -->
   <form class="productForm bg-blue-200 flex flex-col gap-4 mt-2 mb-5 max-w-sm mx-auto p-4">
     <div class="flex flex-col">
         <label for="productName" class="product_name-label text-sm font-bold mb-1">
@@ -96,7 +107,7 @@
     </div>
 </form>
   
-
+<!-- Tabla de Productos -->
   <div class="tabla bg-blue-200 flex flex-col gap-2 mt-2 mb-5 max-w-sm mx-auto p-2 sm:max-w-md md:max-w-lg lg:max-w-xl">
     <div class="overflow-x-auto">
         <table class="productTable w-full mt-2 divide-y divide-green-400">
