@@ -34,7 +34,7 @@ document
     localStorage.setItem("password", password);
 
     // Mostrar un mensaje de registro exitoso
-    let successMessage = `¡Registro exitoso! Bienvenido, ${username}!`;
+    let successMessage = `¡Registro exitoso! ${username}!`;
     document.getElementById("success-message").innerHTML = successMessage;
     document.getElementById("success-popup").style.display = "block";
 
@@ -151,32 +151,34 @@ function addProductToTable(product) {
 
   let row = document.createElement("tr");
   row.innerHTML = `
-    <td class="px-2 py-1 text-xs font-bold uppercase ">${product.name}</td>
-        <td class="px-1 py-1 text-xs">${product.price}</td>
-        <td class="px-1 py-1 text-xs">${product.quantity}</td>
-        <td class="px-2 py-1 text-xs">
-    <button onclick="editProduct(this)" class=" sm:mr-6 text-white bg-blue-400 hover:bg-blue-800 px-2 py-1 rounded-md sm:px-2 sm:py-1"><i class="fas fa-edit text-sm"></i>Editar</button>
-    <button onclick="deleteProduct(this)" class=" sm:mr-6 text-green-100 bg-red-400 hover:bg-red-800 px-2 py-1 rounded-md sm:px-2 sm:py-1"><i class="fas fa-trash-alt text-sm"></i>Eliminar</button>
-  
-    </td>
+   <td class="px-1 py-1 text-xs font-bold uppercase">${product.name}</td>
+<td class="px-1 py-1 text-center text-xs">${product.price}€</td>
+<td class="px-1 py-1  text-center text-xs">${product.quantity}</td>
+<td class="px-1 py-1 text-xs">
+    <div class="flex gap-2 justify-center items-center ">
+        <button onclick="editProduct(this)" class="text-white bg-blue-400 hover:bg-blue-800 px-2 py-1 rounded-md sm:px-2 sm:py-1">
+            <i class="fas fa-edit text-sm"></i> Editar
+        </button>
+        <button onclick="deleteProduct(this)" class="text-green-100 bg-red-400 hover:bg-red-800 px-2 py-1 rounded-md sm:px-2 sm:py-1">
+            <i class="fas fa-trash-alt text-sm"></i> Eliminar
+        </button>
+    </div>
+</td>
+ 
   `;
 
   tableBody.appendChild(row);
 }
 function editProduct(button) {
-  let row = button.parentNode.parentNode;
+  let row = button.closest('tr');
   let productName = row.querySelector("td:nth-child(1)").innerText;
   let productPrice = row.querySelector("td:nth-child(2)").innerText;
   let productQuantity = row.querySelector("td:nth-child(3)").innerText;
 
   // Mostrar un cuadro de diálogo para editar
   let newName = prompt("Editar nombre del producto:", productName);
-  let newPrice = parseFloat(
-    prompt("Editar precio del producto:", productPrice)
-  );
-  let newQuantity = parseFloat(
-    prompt("Editar cantidad del producto:", productQuantity)
-  );
+  let newPrice = parseFloat(prompt("Editar precio del producto:", productPrice.replace('€', '').trim()));  // Asegurar que se elimine el simbolo de euro
+  let newQuantity = parseFloat(prompt("Editar cantidad del producto:", productQuantity));
 
   // Verificar si se cancela la edición
   if (newName === null || isNaN(newPrice) || isNaN(newQuantity)) {
@@ -188,8 +190,10 @@ function editProduct(button) {
   row.querySelector("td:nth-child(2)").innerText = newPrice.toFixed(2);
   row.querySelector("td:nth-child(3)").innerText = newQuantity;
 
-  // Actualizar los valores en el almacenamiento local
+  // Obtener la lista de productos desde localStorage
   let productList = JSON.parse(localStorage.getItem("productList")) || [];
+
+  // Buscar el producto original en la lista y actualizarlo
   let updatedList = productList.map(function (product) {
     if (product.name === productName) {
       return {
@@ -197,9 +201,8 @@ function editProduct(button) {
         price: newPrice,
         quantity: newQuantity
       };
-    } else {
-      return product;
     }
+    return product;
   });
 
   // Guardar la lista actualizada en localStorage
@@ -213,10 +216,11 @@ function editProduct(button) {
     alertElement,
     document.querySelector(".productTable")
   );
+  
   // Desaparecer la alerta después de 2 segundos
   setTimeout(function () {
     alertElement.remove();
-  }, 5000);
+  }, 2000);
 }
 
 // Función para actualizar la tabla
@@ -233,11 +237,14 @@ function updateTable() {
 function deleteProduct(button) {
   const confirmDelete = confirm("¿Estás seguro de que deseas eliminar este producto?");
   if (!confirmDelete) return;
+  
   console.log("Eliminar producto");
+
   // Obtener la fila que contiene el botón
-  let row = button.parentNode.parentNode;
+  let row = button.closest('tr'); // Mejor usar closest() para asegurar que seleccionamos el tr
   // Eliminar la fila de la tabla
   row.remove();
+  
   // Obtener el nombre del producto desde la primera celda de la fila
   let productName = row.querySelector("td:nth-child(1)").innerText;
   console.log("Producto a eliminar:", productName);
@@ -250,12 +257,14 @@ function deleteProduct(button) {
     return product.name !== productName;
   });
   console.log("Lista actualizada:", updatedList); // Verificar la lista actualizada después de filtrar
+
   // Guardar la lista actualizada en localStorage
   localStorage.setItem("productList", JSON.stringify(updatedList));
 
   // Actualizar la tabla
   updateTable();
 }
+
 function updateTable() {
   console.log("Actualizar tabla"); // Verificar si se llama a la función updateTable()
   let tableBody = document.querySelector(".tbodyTable");
